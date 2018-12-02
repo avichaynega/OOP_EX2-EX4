@@ -18,7 +18,7 @@ public class MultiCSV{
 	String csvFilepath;
 	MyGIS_project project = new MyGIS_project() ;
 	
-	 public MultiCSV() {
+	 public MultiCSV(String filepath) {
 		 
 	 }
 	//set and get
@@ -81,7 +81,7 @@ public class MultiCSV{
 			{
 				e.printStackTrace();
 			}
-			
+			project.add(layer);
 			return true;
 		}
 	 
