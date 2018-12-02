@@ -15,11 +15,12 @@ public class MultiCSV{
 	/**
 	 * thils class save the values of Csv files in data structure
 	 */
-	String csvFilepath;
+	String folderpath;
 	MyGIS_project project = new MyGIS_project() ;
 	
-	 public MultiCSV(String filepath) {
-		 
+	 public MultiCSV() {
+		 folderpath = null;
+		 project=null;
 	 }
 	//set and get
 	public MyGIS_project getProject() {
@@ -29,10 +30,10 @@ public class MultiCSV{
 		this.project = project;
 	}
 	public String getCsvFilepath() {
-		return csvFilepath;
+		return folderpath;
 	}
 	public void setCsvFilepath(String csvFilepath) {
-		this.csvFilepath = csvFilepath;
+		this.folderpath = csvFilepath;
 	}
 	
 	/**
@@ -105,9 +106,9 @@ public class MultiCSV{
   
     public static void main(String[] args) throws IOException {
     	MultiCSV multy = new MultiCSV();
-    	multy.findCsvFiles("C:/temp");
+    	multy.findCsvFiles("put your foldertpath");
     	System.out.println("done");
-    	multy.toKml("put your path");
+    	multy.toKml("put your outputpath");
     	
 	}
     
