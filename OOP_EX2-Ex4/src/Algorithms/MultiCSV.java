@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import File_format.EXAM;
+import File_format.ConvertToKml;
 import GIS.MyGIS_element;
 import GIS.MyGIS_layer;
 import GIS.MyGIS_project;
@@ -92,7 +92,7 @@ public class MultiCSV{
      */
      public void toKml(String outputpath) {
     	 File output =  new File(outputpath);
-    	 EXAM convert  = new EXAM(project,output);
+    	 ConvertToKml convert  = new ConvertToKml(project,output);
     	 try {
 			convert.csvToKml();
 		} catch (IOException e) {

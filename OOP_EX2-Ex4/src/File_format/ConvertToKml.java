@@ -19,7 +19,7 @@ import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Style;
 
-public class EXAM {
+public class ConvertToKml {
 	/**
 	 * this class converting the Object calls project to kml file.
 	 */
@@ -29,7 +29,7 @@ public class EXAM {
 	/**
 	 * default constructor 
 	 */
-	public EXAM() {
+	public ConvertToKml() {
 		project=null;
 		KmloutputPath=new File("c:/temp/final.kml");
 	}
@@ -38,7 +38,7 @@ public class EXAM {
 	 * @param value
 	 * @param newKmlFile
 	 */
-	public EXAM(MyGIS_project value,File newKmlFile) {
+	public ConvertToKml(MyGIS_project value,File newKmlFile) {
 		project=value;
 		KmloutputPath=newKmlFile;
 	}
