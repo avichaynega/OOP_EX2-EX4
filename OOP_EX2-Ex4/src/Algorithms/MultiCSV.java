@@ -42,14 +42,16 @@ public class MultiCSV{
 	 */
 	public void findCsvFiles(String parentDirectory){
         File[] filesInDirectory = new File(parentDirectory).listFiles();
+        
         for(File f : filesInDirectory){
             if(f.isDirectory()){
                 findCsvFiles(f.getAbsolutePath());
             }
             String filePath = f.getAbsolutePath();
             String fileExtenstion = filePath.substring(filePath.lastIndexOf(".") + 1,filePath.length());
-            if("csv".equals(fileExtenstion)){
-              read(filePath);
+            
+            if("csv".equals(fileExtenstion)) {
+            		read(filePath);
             }
         }  
         
@@ -66,8 +68,8 @@ public class MultiCSV{
 			MyGIS_layer layer = new MyGIS_layer();
 			try (BufferedReader br = new BufferedReader(new FileReader(csvFilepath))) 
 			{
-				br.readLine();
 				
+				 br.readLine();
 				String[] headline = br.readLine().split(cvsSplitBy);
 				while ((line = br.readLine()) != null) 
 				{
@@ -75,6 +77,7 @@ public class MultiCSV{
 					MyGIS_element elemnt = new MyGIS_element(headline,data);
 					layer.add(elemnt);
 				}
+				
 
 			} 
 			catch (IOException e) 
@@ -105,11 +108,10 @@ public class MultiCSV{
   
     public static void main(String[] args) throws IOException {
     	
-    	MultiCSV multy = new MultiCSV("C:/temp");
+    	MultiCSV multy = new MultiCSV("C:/temp/1");
     	
     	System.out.println("done");
     	multy.toKml("c:/temp/final.kml");
-    	
     	
 	}
     

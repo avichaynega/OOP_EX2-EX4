@@ -7,10 +7,10 @@ import Geom.Point3D;
 public class MyMeta_data implements Meta_data {
 
 	/** returns the Universal Time Clock associated with this data; */
-	public String getUTC() {
+	public long getUTC() {
 		DateTime now = DateTime.now(DateTimeZone.UTC.forOffsetHours(2));
 		//return now.getMillis();
-		return now.toString();
+		return now.getMillis();
 	}
 
 	/** return a String representing this data */

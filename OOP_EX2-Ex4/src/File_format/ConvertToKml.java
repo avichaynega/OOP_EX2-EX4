@@ -3,6 +3,8 @@ package File_format;
 
 
 import java.io.File;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -103,7 +105,8 @@ public class ConvertToKml {
 				double alt=element.getPoint3d().y();
 				String Name=element.getName();
 				String Color=element.getColor();
-				String Time = element.getData().getUTC();
+				DateTime nowTime = new DateTime(element.getData().getUTC());
+				String Time = nowTime.toString();
 				// create Placemark elements
 				createPlacemark(doc, folder,Name,  
 						Color,Time, lon
@@ -142,7 +145,7 @@ public class ConvertToKml {
 
 		Placemark placemark = folder.createAndAddPlacemark();
 		placemark.withDescription("Time: <b>"+ Time +"</b><br/>Name: <b>"+ Name +"</b><br/>"+"Color: <b>"+ Color +"</b><br/>").withStyleUrl(Color);
-		placemark.createAndSetTimeStamp().setWhen(Time);
+		placemark.createAndSetTimeStamp().withWhen(Time);
 		// use the style for each placemark
 		placemark.withName(Name).createAndSetPoint().addToCoordinates(longitude, latitude);
 
