@@ -15,12 +15,11 @@ public class MultiCSV{
 	/**
 	 * thils class save the values of Csv files in data structure
 	 */
-	String folderpath;
+	String csvFilepath;
 	MyGIS_project project = new MyGIS_project() ;
 	
-	 public MultiCSV() {
-		 folderpath = null;
-		 project=null;
+	 public MultiCSV(String folderpath) {
+		 findCsvFiles(folderpath);
 	 }
 	//set and get
 	public MyGIS_project getProject() {
@@ -30,10 +29,10 @@ public class MultiCSV{
 		this.project = project;
 	}
 	public String getCsvFilepath() {
-		return folderpath;
+		return csvFilepath;
 	}
 	public void setCsvFilepath(String csvFilepath) {
-		this.folderpath = csvFilepath;
+		this.csvFilepath = csvFilepath;
 	}
 	
 	/**
@@ -41,7 +40,7 @@ public class MultiCSV{
 	 * @param parentDirectory
 	 * @return
 	 */
-	public boolean findCsvFiles(String parentDirectory){
+	public void findCsvFiles(String parentDirectory){
         File[] filesInDirectory = new File(parentDirectory).listFiles();
         for(File f : filesInDirectory){
             if(f.isDirectory()){
@@ -53,14 +52,14 @@ public class MultiCSV{
               read(filePath);
             }
         }  
-        return true;
+        
     }
 	/**
 	 * function to read the current csv file
 	 * @param csvFilepath
 	 * @return
 	 */
-	public boolean read(String csvFilepath) {
+	public void read(String csvFilepath) {
 		    String line = "";
 			String cvsSplitBy = ",";
 			
@@ -82,8 +81,8 @@ public class MultiCSV{
 			{
 				e.printStackTrace();
 			}
+			
 			project.add(layer);
-			return true;
 		}
 	 
      
@@ -105,10 +104,12 @@ public class MultiCSV{
     
   
     public static void main(String[] args) throws IOException {
-    	MultiCSV multy = new MultiCSV();
-    	multy.findCsvFiles("put your foldertpath");
+    	
+    	MultiCSV multy = new MultiCSV("C:/temp");
+    	
     	System.out.println("done");
-    	multy.toKml("put your outputpath");
+    	multy.toKml("c:/temp/final.kml");
+    	
     	
 	}
     
